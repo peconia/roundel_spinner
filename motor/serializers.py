@@ -7,3 +7,10 @@ class FirstJobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
         fields = ('id', 'action')
+
+
+class JobSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Job
+        fields = ('status',)
