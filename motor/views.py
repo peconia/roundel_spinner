@@ -9,6 +9,10 @@ from rest_framework.authentication import TokenAuthentication
 from django.core.exceptions import ValidationError
 
 
+def home(request):   
+    return render(request, 'motor/home.html', {})
+
+
 class GetFirstJobView(generics.RetrieveAPIView):
     """
     Get the first available job to process.
