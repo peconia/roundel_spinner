@@ -1,0 +1,70 @@
+p, div {
+    font-family: 'Slabo 27px', Verdana, Helvetica, serif;
+    background: rgba(255, 255, 255, 0);
+}
+
+.greeting {
+    margin: 10px;
+    color: #50c603;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rancho', Georgia, serif;
+}
+
+.navbar-brand {
+    font-family: 'Rancho', Georgia, serif;
+    font-size: 2em;
+    text-shadow: 1px 1px 1px #669900;
+}
+
+h1 { 
+    text-shadow: 3px 3px 3px #ccc;
+}
+
+body { 
+    background: url('../images/science.png') repeat 0 0;
+}
+
+.content  {
+    background-color: #FFFFFF;
+    margin-top: 4em;
+    background: rgba(255, 255, 255, 0);
+
+}
+
+.col-md-10 {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px
+}
+
+
+/* jumbotron */
+
+.jumbotron {
+    text-align: center;
+    margin-top: 5em;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.jumbotron p, h1, h4, a {
+    margin: 20px;
+}
+#jumbotitle {
+    color: #66FF00;
+    font-size: 5em;
+    text-align: center;
+    text-shadow: 3px 3px 3px #669900;
+}
+
+#jumbotext {
+    color: #ffffff;
+    text-align: center;
+    padding-top: 2.5em;
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-bottom: 1.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #ccc;
+}
+
