@@ -1,0 +1,82 @@
+p, div {
+    font-family: 'Slabo 27px', Verdana, Helvetica, serif;
+    background: rgba(255, 255, 255, 0);
+}
+
+#greeting {
+
+    color: #009933;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Slabo 27px', Verdana, Helvetica, serif;
+    font-size: large;
+    line-height: 5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Slabo 27px', Verdana, Helvetica, serif;
+}
+
+.navbar-brand img{
+    height: 200%;
+    width: auto;
+    margin-top: -7%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+h1 { 
+    text-shadow: 3px 3px 3px #ccc;
+}
+
+body { 
+    background: url('../images/science.png') repeat 0 0;
+}
+
+.content  {
+    background-color: #FFF;
+    margin-top: 4em;
+    background: rgba(255, 255, 255, 0);
+
+}
+
+.col-md-10 {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px
+}
+
+
+/* jumbotron */
+
+.jumbotron {
+    text-align: center;
+    margin-top: 5em;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.jumbotron p, h1, h4, a {
+    margin: 20px;
+}
+#jumbotitle {
+    color: #009933;
+    font-size: 5em;
+    text-align: center;
+    text-shadow: 3px 3px 3px #017f2b;
+}
+
+#jumbotext {
+    color: #ffffff;
+    text-align: center;
+    padding-top: 2.5em;
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-bottom: 1.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+#login_form_table {
+    border-collapse: separate; /* allow spacing between cell borders */
+    border-spacing: 0 20px;
+}
+
