@@ -30,14 +30,13 @@ h1 {
 }
 
 body { 
-    background: url('../images/science.png') repeat 0 0;
+    background: url('../images/background.png') repeat 0 0;
 }
 
 .content  {
     background-color: #FFF;
     margin-top: 4em;
     background: rgba(255, 255, 255, 0);
-
 }
 
 .col-md-10 {
