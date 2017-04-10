@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'rest_framework',
+    'rest_framework',
     'rest_framework.authtoken',
     'motor',
 ]
@@ -114,7 +114,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
@@ -132,6 +132,6 @@ LOGIN_REDIRECT_URL = '/'
 DEBUG = False
 
 try:
-	from .local_settings import *
+    from .local_settings import *
 except ImportError:
-	pass
+    pass

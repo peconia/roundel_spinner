@@ -4,6 +4,7 @@ myvenv
 __pychache__
 db.sqlite3
 /static
+staticfiles
 .DS_Store
 local_settings.py
 .idea/*

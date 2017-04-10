@@ -17,19 +17,21 @@
     <body>
         <nav class="navbar-wrapper navbar-default navbar-custom navbar-static-top" role="navigation">
 
-            <div class="navbar-header">
+            <div class="navbar-header" id="nav">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img alt="GW Devices logo" src="{% static 'images/gwdevices_logo.png"></a>
+                <a class="navbar-brand" href="/">
+                    <img alt="GW Devices logo" src="{% static 'images/gwdevices_logo.png' %}">
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                 <ul class="nav navbar-nav pull-right">
                 {% if user.is_authenticated %}
-                    <li class="greeting">Hello {{ user.username }}! <br/></li>
+                    <li id="greeting">Hello {{ user.username }}! <br/></li>
                     <li><a title="Log Out" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
                  
                 {% else %}
