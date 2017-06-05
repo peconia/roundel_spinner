@@ -4,8 +4,8 @@ from django.utils import timezone
 
 class Job(models.Model):
 
-    Spin_clockwise = 0
-    Spin_counterclockwise = 1
+    Spin_clockwise = 'CLOCKWISE'
+    Spin_counterclockwise = 'COUNTER_CLOCKWISE'
     Actions = ((Spin_clockwise, "Spin Clockwise"),
                (Spin_counterclockwise, "Spin Counterclockwise"),
                )
@@ -20,7 +20,7 @@ class Job(models.Model):
                 (Failed, "Failed"),
                 )
 
-    action = models.IntegerField(choices=Actions)
+    action = models.CharField(choices=Actions, max_length=25)
     status = models.IntegerField(choices=Statuses, default=0)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -29,3 +29,4 @@ class Job(models.Model):
 
     # last updated on Pi
     status_updated_time = models.DateTimeField(default=timezone.now)
+

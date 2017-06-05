@@ -1,12 +1,13 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound
 from django.shortcuts import render
-from motor.serializers import FirstJobSerializer, JobSerializer
+from motor.serializers import FirstJobSerializer, JobStatusSerializer, JobTypeSerializer
 from motor.models import Job
-from rest_framework import generics, status
+from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from django.core.exceptions import ValidationError
+from django.contrib import messages
 
 
 def home(request):   
@@ -43,7 +44,7 @@ class UpdateJobStatusView(generics.UpdateAPIView):
     """
     permission_classes = (IsAuthenticated,)
     authentication_classes = (TokenAuthentication,)
-    serializer_class = JobSerializer
+    serializer_class = JobStatusSerializer
 
     def partial_update(self, request, *args, **kwargs): 
         try:
@@ -63,7 +64,7 @@ class UpdateJobStatusView(generics.UpdateAPIView):
                 pass
                 #logger.info("Update job request had invalid data.")
 
-        except (Device.DoesNotExist, Job.DoesNotExist, KeyError, ValidationError) as error:
+        except (Job.DoesNotExist, KeyError, ValidationError) as error:
             pass            
             #logger.error("Error when updating Job status. Exception: {}".format(repr(error)))
         return HttpResponseNotFound("Unable to update job status.")
@@ -72,3 +73,30 @@ class UpdateJobStatusView(generics.UpdateAPIView):
         # disable PUT requests - UpdateAPIView accepts them usually but we only want to accept PATCH requests.
         return HttpResponseNotAllowed(['PATCH'])
 
+
+class CreateNewJobView(generics.CreateAPIView):
+    """
+    Create a new job for the Rpi
+    """
+    authentication_classes = (SessionAuthentication, TokenAuthentication)
+    permission_classes = (IsAuthenticated,)
+    serializer_class = JobTypeSerializer
+
+    def create(self, request, *args, **kwargs):
+        try:
+            job_type = kwargs["job_type"].upper()
+
+            if job_type in [i[0] for i in Job.Actions]:
+
+                # check if reset job already pending
+                if len(Job.objects.filter(action=job_type, status=Job.Pending)) > 0:
+                    messages.warning(request._request, "Job already pending.")
+                    return HttpResponse("{} job already pending.".format(job_type))
+                Job.objects.create(action=job_type)
+                messages.success(request._request, "{} job created successfully.".format(job_type))
+                return HttpResponse("{} job created successfully.".format(job_type),)
+            else:
+                return HttpResponseNotFound("NO SUCH JOB TYPE")
+        except KeyError as ex:
+            # logger.error("Error creating new job. Exception {}".format(repr(ex)))
+            return HttpResponseNotFound("Unable to create new job.")

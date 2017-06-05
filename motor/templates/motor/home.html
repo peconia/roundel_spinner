@@ -2,19 +2,52 @@
 
 {% block content %}
 
-        <div class="container">
-          <div class="col-md-2"></div>
-          <div class="jumbotron col-md-8">
-              <h1 id="jumbotitle">GWD office is now interactive!</h1>
-              {% if user.is_authenticated %}
-                  <h2>Spin the glasses</h2>
-                  <p><button class="btn btn-lg" role="button">Clockwise</button></p>
-                  <p><button class="btn btn-lg" role="button">Counter Clockwise</button></p>
-              {% else %}
-                <h4>Log in to see what you can do!</h4>
-              {% endif %}
-          </div>
-
+    <div class="container">
+        <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <h1 id="jumbotitle">GWD office is now interactive!</h1>
+                <hr>
+                {% if user.is_authenticated %}
+                    <h2>Spin the glasses</h2>
+{#                    {% if messages %}#}
+{#                        <h3>Messages</h3>#}
+{#                        <ul class="messages">#}
+{##}
+{#                            {% for message in messages %}#}
+{#                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                            {% endfor %}#}
+{#                        </ul>#}
+{#                    {% endif %}#}
+                    <p><button class="btn btn-lg btn-green btn-block" role="button"
+                               id="clockwise-btn">Clockwise</button></p>
+                    <p><button class="btn btn-lg btn-green btn-block" role="button"
+                               id="counter-clockwise-btn">Counter Clockwise</button></p>
+                {% else %}
+                    <h4>Log in to see what you can do!</h4>
+                {% endif %}
+            </div>
         </div>
+    </div>
 
+
+{% endblock %}
+
+{% block scripts %} }
+       <script type="text/javascript">
+            $(document).ready(function() {
+                var post_data = {'csrfmiddlewaretoken':"{{ csrf_token }}"};
+
+                $("#clockwise-btn").click(function () {
+                    var url = '/job/clockwise/';
+                    $.post(url, post_data);
+                });
+                $("#counter-clockwise-btn").click(function () {
+                    var url = '/job/counter_clockwise/';
+                    $.post(url, post_data);
+                });
+                $('input[name="signature"]').click(function () {
+                    $(this).select();
+                });
+            });
+       </script>
 {% endblock %}

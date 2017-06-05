@@ -9,8 +9,15 @@ class FirstJobSerializer(serializers.ModelSerializer):
         fields = ('id', 'action')
 
 
-class JobSerializer(serializers.ModelSerializer):
+class JobStatusSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Job
         fields = ('status',)
+
+
+class JobTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Job
+        fields = ('action',)
