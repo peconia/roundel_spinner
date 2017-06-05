@@ -129,7 +129,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 LOGIN_REDIRECT_URL = '/'
 
-DEBUG = True
+DEBUG = False
 
 try:
     from .local_settings import *
